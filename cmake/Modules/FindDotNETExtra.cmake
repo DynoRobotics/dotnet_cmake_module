@@ -78,6 +78,9 @@ function(install_dotnet _TARGET_NAME)
         message(SEND_ERROR "install_dotnet: ${_TARGET_NAME}: DESTINATION must be specified.")
       endif()
     endif()
+    
+    # FIXME: temporary fix for Mono on Linux
+    set(_target_path "${CSHARP_BUILDER_OUTPUT_PATH}obj/x64/Debug")
     install(DIRECTORY ${_target_path}/ DESTINATION ${_DESTINATION})
 
     if(_target_executable)
